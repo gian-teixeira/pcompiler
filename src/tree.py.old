@@ -1,0 +1,199 @@
+from dataclasses import dataclass, field, InitVar
+from typing import Any
+from enum import Enum
+
+from datatype import DataType
+
+class Node:
+    @dataclass
+    class RelOp:
+        signal : str
+        right : Any = field(default=None)
+        left : Any = field(default=None)
+        datatype : DataType = field(default=None)
+
+        def asdict(self):
+            return {
+                "RelOp": {
+                    "signal": self.signal,
+                    "datatype": self.datatype,
+                    "right": dict(self.right),
+                    "left": dict(self.left)
+                }
+            }
+
+    @dataclass
+    class AritOp:
+        signal : str
+        right : Any = field(default=None)
+        left : Any = field(default=None)
+        datatype : DataType = field(default=None)
+
+        def asdict(self):
+            return {
+                "AritOp": {
+                    "signal": self.signal,
+                    "datatype": self.datatype,
+                    "right": dict(self.right),
+                    "left": dict(self.left)
+                }
+            }
+
+    @dataclass
+    class Assign:
+        right : Any = field(default=None)
+        left : Any = field(default=None)
+
+        def asdict(self):
+            return {
+                "Assign": {
+                    "right": dict(self.right),
+                    "left": dict(self.left)
+                }
+            }
+
+    @dataclass
+    class Block:
+        expressions : list[Any] = field(default_factory=lambda : [])
+
+        def asdict(self):
+            return {
+                "Block": {
+                    "expressions": [dict(arg) for arg in args]
+                }
+            }
+
+    @dataclass
+    class If:
+        condition : Any
+        block : Any
+
+        def asdict(self):
+            return {
+                "If": {
+                    "condition": dict(self.condition),
+                    "block": dict(self.block)
+                }
+            }
+
+    @dataclass
+    class While:
+        condition : Any
+        block : Any
+
+        def asdict(self):
+            return {
+                "While": {
+                    "condition": dict(self.condition),
+                    "block": dict(self.block)
+                }
+            }
+
+    @dataclass
+    class Print:
+        format_string : str
+        args : list[Any] = field(default_factory=lambda : [])
+
+        def asdict(self):
+            return {
+                "Print": {
+                    "format_string": dict(self.format_string),
+                    "args": [dict(arg) for arg in args]
+                }
+            }
+
+    @dataclass
+    class Return:
+        expression : Any
+
+        def asdict(self):
+            return {
+                "Return": {
+                    "expression": dict(self.expression),
+                }
+            }
+
+    @dataclass
+    class Call:
+        function : str
+        args : list[Any]
+
+        def asdict(self):
+            return {
+                "Print": {
+                    "function": dict(self.function),
+                    "args": [dict(arg) for arg in args]
+                }
+            }
+
+    @dataclass
+    class Id:
+        name : str
+        datatype : DataType
+
+        def asdict(self):
+            return {
+                "Id": {
+                    "name": self.name,
+                    "datatype": self.datatype
+                }
+            }
+
+    @dataclass
+    class IntConst:
+        value : int
+        datatype : InitVar[DataType] = DataType.Int
+
+        def asdict(self):
+            return {
+                "IntConst": {
+                    "value": self.value,
+                    "datatype": self.datatype
+                }
+            }
+
+    @dataclass
+    class FloatConst:
+        value : float
+        datatype : InitVar[DataType] = DataType.Float
+
+        def asdict(self):
+            return {
+                "FloatConst": {
+                    "value": self.value,
+                    "datatype": self.datatype
+                }
+            }
+
+    @dataclass
+    class CharConst:
+        value : str
+        datatype : InitVar[DataType] = DataType.Float
+
+        def asdict(self):
+            return {
+                "CharConst": {
+                    "value": self.value,
+                    "datatype": self.datatype
+                }
+            }
+
+    @dataclass
+    class Function:
+        name : str
+        block : Any = None
+        parameters : list[Any] = field(default_factory=lambda : [])
+
+        def asdict(self):
+            return {
+                "Function": {
+                    "name": self.name,
+                    "parameters": [dict(param) for param in self.parameters],
+                    "block": dict(self.block)
+                }
+            }
+
+class AbstractSyntaxTree:
+    def __init__(self, function_name):
+        self.root = Node.Function(function_name)
+
