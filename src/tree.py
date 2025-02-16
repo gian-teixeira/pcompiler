@@ -21,7 +21,7 @@ class Node:
             return {
                 "RelOp": {
                     "signal": self.signal,
-                    "datatype": self.datatype.value.value,
+                    "datatype": self.datatype.value,
                     "left": self.left.asdict(),
                     "right": self.right.asdict(),
                 }
@@ -72,12 +72,14 @@ class Node:
     class If:
         condition : Any
         block : Any
+        else_ : Any
 
         def asdict(self):
             return {
                 "If": {
                     "condition": self.condition.asdict(),
-                    "block": self.block.asdict()
+                    "block": self.block.asdict(),
+                    "else": self.else_.asdict()
                 }
             }
 
@@ -125,7 +127,7 @@ class Node:
 
         def asdict(self):
             return {
-                "Print": {
+                "Call": {
                     "function": self.function,
                     "args": [arg.asdict() for arg in self.args]
                 }

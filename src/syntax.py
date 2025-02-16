@@ -2,7 +2,7 @@ from copy import deepcopy
 import json
 from pprint import pprint
 
-from tokens import TokenType
+from tokens import TokenType, Token
 from table import SymbolTable, SymbolTableEntry, FunctionRegister, CallRegister
 from tree import AbstractSyntaxTree, Node
 from datatype import DataType
@@ -21,6 +21,7 @@ def tree_method(func):
 class SyntaxAnalyzer:
     def __init__(self, tokens):
         self.tokens = list(reversed(deepcopy(tokens)))
+        self.tokens = [Token("$", TokenType.EOF, -1)] + self.tokens
 
         self.symbol_tables = DefaultDict(lambda key: SymbolTable())
         self.ASTs = DefaultDict(lambda key: AbstractSyntaxTree(key))
@@ -32,8 +33,8 @@ class SyntaxAnalyzer:
 
     @property
     def token(self):
-        if len(self.tokens) == 0:
-            error = (f"no more tokens to read")
+        if False and self.tokens[-1].type == TokenType.EOF:
+            error = (f"found EOF")
             Logger.syntatic_error(error)
             raise SyntaticError(error)
         return self.tokens[-1]
@@ -55,7 +56,7 @@ class SyntaxAnalyzer:
             error_message = f"expected token {expected_type} " \
                     f"but found {self.token.type} on line {self.token.line}"
             Logger.syntatic_error(error_message)
-            raise SyntaticError(error)
+            raise SyntaticError(error_message)
         return self.tokens.pop()
 
     def search_match(self, expected_type : TokenType):
@@ -85,23 +86,26 @@ class SyntaxAnalyzer:
 
     def program(self):
         self.__function()
-        #self.__function_sequence()
+        self.__function_sequence()
+
+        logger = Logger.get_instance()
+        for function in self.symbol_tables:
+            logger.function_info(function, self.symbol_tables[function], self.ASTs[function])
 
     @tree_method
     def __function(self):
         self.match(TokenType.Function)
-
         function_name = self.__function_name()
         function_node = Node.Function(function_name.lexeme)
-
         self.push_scope(function_name.lexeme)
-
         self.match(TokenType.LBracket)
         self.__parameter_list(function_node)
         self.match(TokenType.RBracket)
         self.__function_return_type()
-
         function_node.block = self.__block()
+        self.pop_scope()
+        self.ASTs[function_name.lexeme] = function_node
+        return function_node
 
         #for entry in self.symbol_table:
         #    print(entry)
@@ -115,6 +119,14 @@ class SyntaxAnalyzer:
 
         self.pop_scope()
         return function_node
+
+    @tree_method
+    def __function_sequence(self):
+        match self.token.type:
+            case TokenType.Function:
+                function_node = self.__function()
+                self.__function_sequence()
+
 
     @tree_method
     def __function_name(self):
@@ -207,11 +219,11 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.Let:
                 self.__declaration()
+                self.__sequence(block_node)
             case TokenType.Id | TokenType.If | TokenType.While | TokenType.Println | TokenType.Return:
                 command_node = self.__command()
                 block_node.expressions.append(command_node)
-        self.match(TokenType.PComma)
-        self.__sequence(block_node)
+                self.__sequence(block_node)
 
     @tree_method
     def __declaration(self):
@@ -219,6 +231,7 @@ class SyntaxAnalyzer:
         var_list = self.__var_list()
         self.match(TokenType.Colon)
         datatype : DataType = self.__type();
+        self.match(TokenType.PComma)
         for var in var_list:
             if self.symbol_table.has_entry(var.lexeme):
                 Logger.semantic_error(f"variable {var.lexeme} "
@@ -254,30 +267,55 @@ class SyntaxAnalyzer:
                 id_node = Node.Id(id.lexeme, datatype)
                 command_node = self.__attr_or_call(id_node)
                 return command_node
-            case TokenType.If: raise Exception("Not implemented")
-            case TokenType.While: raise Exception("Not implemented")
-            case TokenType.Println: raise Exception("Not implemented")
-            case TokenType.Return: raise Exception("Not implemented")
+            case TokenType.If | TokenType.LBrace: return self.__if()
+            case TokenType.While: return self.__while()
+            case TokenType.Println: return self.__println()
+            case TokenType.Return: return self.__return()
 
     @tree_method
     def __if(self):
-        pass
+        match self.token.type:
+            case TokenType.If:
+                self.match(TokenType.If)
+                expr_node = self.__expr()
+                block_node = self.__block()
+                else_node = self.__else()
+                return Node.If(expr_node, block_node, else_node)
+            case TokenType.LBrace:
+                return self.__block()
 
     @tree_method
     def __else(self):
-        pass
+        match self.token.type:
+            case TokenType.Else:
+                self.match(TokenType.Else)
+                return self.__if()
 
     @tree_method
     def __while(self):
-        pass
+        self.match(TokenType.While)
+        expr_node = self.__expr()
+        block_node = self.__block()
+        return Node.While(expr_node, block_node)
 
     @tree_method
     def __println(self):
-        pass
+        self.match(TokenType.Println)
+        self.match(TokenType.LBracket)
+        format_str = self.mtach(TokenType.FormatString)
+        self.match(TokenType.Comma)
+        print_node = Node.Print(format_str.lexeme)
+        self.__arg_list(print_node, CallRegister("tmp"))
+        self.match(TokenType.RBracket)
+        self.match(TokenType.PComma)
+        return print_node
 
     @tree_method
     def __return(self):
-        pass
+        self.match(TokenType.Return)
+        expr_node = self.__expr()
+        self.match(TokenType.PComma)
+        return Node.Return(expr_node)
 
     @tree_method
     def __attr_or_call(self, id_node : Node.Id):
@@ -286,8 +324,24 @@ class SyntaxAnalyzer:
                 self.match(TokenType.Attr)
                 expr_node = self.__expr()
                 assign_node = Node.Assign(id_node, expr_node)
+                self.match(TokenType.PComma)
                 return assign_node
-            case TokenType.LBracket: raise Exception("Not implemented")
+            case TokenType.LBracket:
+                self.match(TokenType.LBracket)
+                try:
+                    call_node = Node.Call(id_node.name)
+                    call_register = CallRegister(id_node.name)
+                    call_node = self.__arg_list(call_node, call_register)
+                    self.match(TokenType.RBracket)
+                    call_entry = self.symbol_table.get_entry(f"{id_node.name}")
+                    call_entry.name = id_node.name
+                    call_entry.datatype = self.function_register.ret_type
+                    call_entry.call_ref = call_register
+                    return call_node
+                except CompilerError as e:
+                    Logger.syntatic_error("Ignoring parenthesis content on line {begin.line}")
+                    self.search_match(TokenType.RBracket)
+                    return Node.Error()
 
     @tree_method
     def __expr(self):
@@ -308,11 +362,11 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.EQ:
                 self.match(TokenType.EQ)
-                relop_node = Node.RelOp('==', expr_node, None)
+                relop_node = Node.RelOp('==', expr_node, None, DataType.Int)
                 return relop_node
             case TokenType.NEQ:
                 self.match(TokenType.NEQ)
-                relop_node = Node.RelOp('!=', expr_node, None)
+                relop_node = Node.RelOp('!=', expr_node, None, DataType.Int)
                 return relop_node
 
     @tree_method
@@ -334,19 +388,19 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.LT:
                 self.match(TokenType.LT)
-                relop_node = Node.RelOp('<', add_node, None)
+                relop_node = Node.RelOp('<', add_node, None, DataType.Int)
                 return relop_node
             case TokenType.LE:
                 self.match(TokenType.LE)
-                relop_node = Node.RelOp('<=', add_node, None)
+                relop_node = Node.RelOp('<=', add_node, None, DataType.Int)
                 return relop_node
             case TokenType.GT:
                 self.match(TokenType.GT)
-                relop_node = Node.RelOp('>', add_node, None)
+                relop_node = Node.RelOp('>', add_node, None, DataType.Int)
                 return relop_node
             case TokenType.GE:
                 self.match(TokenType.GE)
-                relop_node = Node.RelOp('>=', add_node, None)
+                relop_node = Node.RelOp('>=', add_node, None, DataType.Int)
                 return relop_node
 
     @tree_method
@@ -368,11 +422,11 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.Plus:
                 self.match(TokenType.Plus)
-                add_node = Node.AritOp('+', left_node, None)
+                add_node = Node.AritOp('+', left_node, None, left_node.datatype)
                 return add_node
             case TokenType.Minus:
                 self.match(TokenType.Minus)
-                add_node = Node.AritOp('-', left_node, None)
+                add_node = Node.AritOp('-', left_node, None, left_node.datatype)
                 return add_node
 
     @tree_method
@@ -406,21 +460,14 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.Id:
                 id = self.match(TokenType.Id)
-
                 if not self.symbol_table.has_entry(id.lexeme):
-                    Logger.semantic_error(f"function {id.lexeme} "
-                            f"not declared in this scope, line {id.line}")
-
-                call_node = Node.Call(id.lexeme)
-                call_register = CallRegister(id.lexeme)
-                call_node = self.__function_call(call_node, call_register)
-
-                call_entry = self.symbol_table.get_entry(f"{id.lexeme}:{id.line}")
-                call_entry.name = id.lexeme
-                call_entry.datatype = self.function_register.ret_type
-                call_entry.call_ref = call_register
-
-                return call_node
+                    Logger.semantic_error(f"name {id.lexeme} "
+                            f"not declared in this scope, line {var.line}")
+                    datatype = DataType.Void
+                else:
+                    datatype = self.symbol_table.get_entry(id.lexeme).datatype
+                id_node = Node.Id(id.lexeme, datatype)
+                return self.__function_call(id_node)
             case TokenType.IntConst:
                 int_const = self.match(TokenType.IntConst)
                 return Node.IntConst(int(int_const.lexeme))
@@ -442,19 +489,25 @@ class SyntaxAnalyzer:
                     return Node.Error()
 
     @tree_method
-    def __function_call(self, call_node, call_register):
+    def __function_call(self, id_node):
         match self.token.type:
             case TokenType.LBracket:
                 self.match(TokenType.LBracket)
                 try:
+                    call_node = Node.Call(id_node.name)
+                    call_register = CallRegister(id_node.name)
                     call_node = self.__arg_list(call_node, call_register)
                     self.match(TokenType.RBracket)
+                    call_entry = self.symbol_table.get_entry(f"{id_node.name}")
+                    call_entry.name = id_node.name
+                    call_entry.datatype = self.function_register.ret_type
+                    call_entry.call_ref = call_register
                     return call_node
                 except CompilerError as e:
                     Logger.syntatic_error("Ignoring parenthesis content on line {begin.line}")
                     self.search_match(TokenType.RBracket)
                     return Node.Error()
-        return call_node
+        return id_node
 
     @tree_method
     def __arg_list(self, call_node, call_register):

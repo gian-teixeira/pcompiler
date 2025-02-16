@@ -4,9 +4,12 @@ from log import Logger
 
 if __name__ == '__main__':
     source = """
-    fn tmp(x : int, y : int) {
-        let a, b : int;
-        a = min(x, y);
+    fn min(x : int, y : int) {
+        let x : int;
+        while(x < y) {
+            x = x+1;
+        }
+        return y;
     }
     """
 
@@ -18,10 +21,4 @@ if __name__ == '__main__':
     syntax_analyzer = SyntaxAnalyzer(tokens)
 
     syntax_analyzer.program()
-
-    logger = Logger.get_instance()
-    for error in Logger.instance.syntatic_errors:
-        print(error)
-    for error in Logger.instance.semantic_errors:
-        print(error)
 
