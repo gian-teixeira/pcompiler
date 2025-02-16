@@ -1,5 +1,6 @@
 from enum import Enum
 from tokens import Token, TokenType
+from log import Logger
 
 LexerState = Enum('State', [
     'Base',
@@ -19,6 +20,7 @@ class Lexer:
         tokens = []
         for nline, line in enumerate(source.splitlines()):
             tokens += cls.parse_line(line, nline)
+        Logger.token_list(tokens)
         return tokens
 
     @staticmethod

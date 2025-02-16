@@ -12,9 +12,9 @@ from error import SyntaticError, SemanticError, CompilerError
 
 def tree_method(func):
     def wrapper(analyzer, *args, **kwargs):
-        print(f"Starting {func.__name__} {analyzer.token.type}")
+        Logger.log(f"Starting {func.__name__} {analyzer.token.type}")
         node = func(analyzer, *args, **kwargs)
-        print(f"Ending {func.__name__} {node}")
+        Logger.log(f"Ending {func.__name__} {node}")
         return node
     return wrapper
 
@@ -30,6 +30,8 @@ class SyntaxAnalyzer:
         self.symbol_table_stack = []
         self.AST_stack = []
         self.function_register_stack = []
+
+        self.__program()
 
     @property
     def token(self):
@@ -84,7 +86,7 @@ class SyntaxAnalyzer:
         self.symbol_table_stack.pop()
         self.AST_stack.pop()
 
-    def program(self):
+    def __program(self):
         self.__function()
         self.__function_sequence()
 

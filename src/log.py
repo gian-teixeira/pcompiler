@@ -3,16 +3,24 @@ from pprint import pprint
 import os
 
 class Logger:
-    log_folder = "log"
-    semantic_errors_filename = "semantic_errors"
-    syntatic_errors_filename = "syntatic_errors"
-    function_info_filename_prefix = "function_"
     instance = None
 
     def __init__(self):
         os.makedirs("log", exist_ok=True)
-        self.semantic_errors_file = open(f"{self.log_folder}/{self.semantic_errors_filename}.txt", "w+")
-        self.syntatic_errors_file = open(f"{self.log_folder}/{self.syntatic_errors_filename}.txt", "w+")
+        self.semantic_errors_file = open(f"log/semantic_errors.txt", "w+")
+        self.syntatic_errors_file = open(f"log/syntatic_errors.txt", "w+")
+        self.general_file = open(f"log/log.txt", "w+")
+
+    @classmethod
+    def init(cls):
+        cls.instance = cls()
+
+    @classmethod
+    def close(cls):
+        logger = cls.get_instance()
+        logger.semantic_errors_file.close()
+        logger.syntatic_errors_file.close()
+        logger.general_file.close()
 
     @classmethod
     def get_instance(cls):
@@ -31,7 +39,21 @@ class Logger:
         logger.semantic_errors_file.write(f"{desc}\n")
 
     @classmethod
+    def log(cls, message : str):
+        logger = cls.get_instance()
+        logger.general_file.write(f"{message}\n")
+
+    @classmethod
     def function_info(cls, function_name, symbol_table, root_node):
-        with open(f"{cls.log_folder}/{cls.function_info_filename_prefix}"
-                  f"{function_name}_AST_AST.txt", "w+") as file:
+        with open(f"log/function_{function_name}_AST.txt", "w+") as file:
             file.write(json.dumps(root_node.asdict(), indent=1))
+        with open(f"log/function_{function_name}_ST.txt", "w+") as file:
+            for entry in symbol_table:
+                file.write(str(entry)+'\n')
+
+    @classmethod
+    def token_list(cls, tokens):
+        with open(f"log/tokens.txt", "w+") as file:
+            for token in tokens:
+                file.write(f"{str(token)}\n")
+

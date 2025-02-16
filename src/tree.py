@@ -1,8 +1,10 @@
 from dataclasses import dataclass, field, InitVar
 from typing import Any
 from enum import Enum
+import json
 
 from datatype import DataType
+from log import Logger
 
 class Node:
     @dataclass
@@ -27,6 +29,14 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            if self.right.datatype != self.left.datatype:
+                Logger.semantic_error(f"RelOp : operator `{self.signal}` "
+                        f"incompatible with types `{self.left.datatype.value}` "
+                        f"and `{self.right.datatype.value}`")
+            self.left.type_check()
+            self.right.type_check()
+
     @dataclass
     class AritOp:
         signal : str = field(default='')
@@ -44,6 +54,14 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            if self.right.datatype != self.left.datatype:
+                Logger.semantic_error(f"AritOp : operator `{self.signal}` "
+                        f"incompatible with types `{self.left.datatype.value}` "
+                        f"and `{self.right.datatype.value}`")
+            self.left.type_check()
+            self.right.type_check()
+
     @dataclass
     class Assign:
         left : Any = field(default=None)
@@ -57,6 +75,13 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            if self.right.datatype != self.left.datatype:
+                Logger.semantic_error(f"Assign : variable `{self.left.name}` "
+                        f"incompatible with type `{self.right.datatype.value}`")
+            self.left.type_check()
+            self.right.type_check()
+
     @dataclass
     class Block:
         expressions : list[Any] = field(default_factory=lambda : [])
@@ -67,6 +92,10 @@ class Node:
                     "expressions": [expr.asdict() for expr in self.expressions]
                 }
             }
+
+        def type_check(self):
+            for expr in self.expressions:
+                expr.type_check()
 
     @dataclass
     class If:
@@ -83,6 +112,11 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            self.condition.type_check()
+            self.block.type_check()
+            self.else_.type_check()
+
     @dataclass
     class While:
         condition : Any
@@ -95,6 +129,10 @@ class Node:
                     "block": self.block.asdict()
                 }
             }
+
+        def type_check(self):
+            self.condition.type_check()
+            self.block.type_check()
 
     @dataclass
     class Print:
@@ -109,6 +147,10 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            for arg in self.args:
+                arg.type_check()
+
     @dataclass
     class Return:
         expression : Any
@@ -119,6 +161,9 @@ class Node:
                     "expression": self.expression.asdict(),
                 }
             }
+
+        def type_check(self):
+            self.expression.type_check()
 
     @dataclass
     class Call:
@@ -133,6 +178,10 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            for arg in self.args:
+                arg.type_check()
+
     @dataclass
     class Id:
         name : str
@@ -145,6 +194,9 @@ class Node:
                     "datatype": self.datatype.value
                 }
             }
+
+        def type_check(self):
+            pass
 
     @dataclass
     class IntConst:
@@ -159,6 +211,9 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            pass
+
     @dataclass
     class FloatConst:
         value : float
@@ -172,6 +227,9 @@ class Node:
                 }
             }
 
+        def type_check(self):
+            pass
+
     @dataclass
     class CharConst:
         value : str
@@ -184,6 +242,9 @@ class Node:
                     "datatype": self.datatype.value
                 }
             }
+
+        def type_check(self):
+            pass
 
     @dataclass
     class Function:
@@ -199,6 +260,11 @@ class Node:
                     "block": self.block.asdict()
                 }
             }
+
+        def type_check(self):
+            self.block.type_check()
+            for param in self.parameters:
+                param.type_check()
 
 class AbstractSyntaxTree:
     def __init__(self, function_name):
