@@ -109,19 +109,6 @@ class SyntaxAnalyzer:
         self.ASTs[function_name.lexeme] = function_node
         return function_node
 
-        #for entry in self.symbol_table:
-        #    print(entry)
-
-        AST_dict = function_node.asdict()
-        #pprint(AST_dict)
-        print(json.dumps(AST_dict, indent=2))
-
-        for entry in self.symbol_table:
-            print(entry)
-
-        self.pop_scope()
-        return function_node
-
     @tree_method
     def __function_sequence(self):
         match self.token.type:
@@ -260,14 +247,19 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.Id:
                 id = self.match(TokenType.Id);
-                datatype = DataType.Void
+
                 if not self.symbol_table.has_entry(id.lexeme):
-                    Logger.semantic_error(f"name {id.lexeme} "
-                            f"not declared in this scope, line {var.line}")
+                    datatype = DataType.Void
                 else:
                     datatype = self.symbol_table.get_entry(id.lexeme).datatype
+
                 id_node = Node.Id(id.lexeme, datatype)
                 command_node = self.__attr_or_call(id_node)
+
+                if command_node == id_node and datatype == DataType.Void:
+                    Logger.semantic_error(f"__command: name {id.lexeme} "
+                            f"not declared in this scope, line {var.line}")
+
                 return command_node
             case TokenType.If | TokenType.LBrace: return self.__if()
             case TokenType.While: return self.__while()
@@ -304,10 +296,11 @@ class SyntaxAnalyzer:
     def __println(self):
         self.match(TokenType.Println)
         self.match(TokenType.LBracket)
-        format_str = self.mtach(TokenType.FormatString)
+        format_str = self.match(TokenType.FormatString)
         self.match(TokenType.Comma)
         print_node = Node.Print(format_str.lexeme)
-        self.__arg_list(print_node, CallRegister("tmp"))
+        call_register = CallRegister("println")
+        self.__arg_list(print_node, call_register)
         self.match(TokenType.RBracket)
         self.match(TokenType.PComma)
         return print_node
@@ -450,11 +443,11 @@ class SyntaxAnalyzer:
         match self.token.type:
             case TokenType.Mult:
                 self.match(TokenType.Mult)
-                mult_node = Node.AritOp('*', left_node, None)
+                mult_node = Node.AritOp('*', left_node, None, left_node.datatype)
                 return mult_node
             case TokenType.Div:
-                self.match(TokenType.Minus)
-                mult_node = Node.AritOp('/', left_node, None)
+                self.match(TokenType.Div)
+                mult_node = Node.AritOp('/', left_node, None, left_node.datatype)
                 return mult_node
 
     @tree_method
@@ -463,19 +456,21 @@ class SyntaxAnalyzer:
             case TokenType.Id:
                 id = self.match(TokenType.Id)
                 if not self.symbol_table.has_entry(id.lexeme):
-                    Logger.semantic_error(f"name {id.lexeme} "
-                            f"not declared in this scope, line {var.line}")
                     datatype = DataType.Void
                 else:
                     datatype = self.symbol_table.get_entry(id.lexeme).datatype
                 id_node = Node.Id(id.lexeme, datatype)
-                return self.__function_call(id_node)
+                factor_node = self.__function_call(id_node)
+                if factor_node == id_node and datatype == DataType.Void:
+                    Logger.semantic_error(f"__factor: name {id.lexeme} "
+                            f"not declared in this scope, line {id.line}")
+                return factor_node
             case TokenType.IntConst:
                 int_const = self.match(TokenType.IntConst)
                 return Node.IntConst(int(int_const.lexeme))
             case TokenType.FloatConst:
                 float_const = self.match(TokenType.FloatConst)
-                return Node.floatConst(float(float_const.lexeme))
+                return Node.FloatConst(float(float_const.lexeme))
             case TokenType.CharConst:
                 char_const = self.match(TokenType.CharConst)
                 return Node.CharConst(char_const.lexeme)
@@ -496,7 +491,14 @@ class SyntaxAnalyzer:
             case TokenType.LBracket:
                 self.match(TokenType.LBracket)
                 try:
-                    call_node = Node.Call(id_node.name)
+                    if not id_node.name in self.function_registers:
+                        Logger.semantic_error(f"__function_call: function {id_node.name} "
+                                f"not declared in this scope")
+                        datatype = DataType.Void
+                    else:
+                        datatype = self.function_registers[id_node.name].ret_type
+
+                    call_node = Node.Call(id_node.name, datatype)
                     call_register = CallRegister(id_node.name)
                     call_node = self.__arg_list(call_node, call_register)
                     self.match(TokenType.RBracket)
@@ -537,29 +539,22 @@ class SyntaxAnalyzer:
                 id = self.match(TokenType.Id)
 
                 if not self.symbol_table.has_entry(id.lexeme):
-                    Logger.semantic_error(f"function {id.lexeme} "
-                            f"not declared in this scope, line {var.line}")
-
-                call_node = Node.Call(id.lexeme)
-                call_register = CallRegister(id.lexeme)
-                call_node = self.__function_call(call_node, call_register)
-
-                call_entry = self.symbol_table.get_entry(f"{id.lexeme}:{id.line}")
-                call_entry.name = id.lexeme
-                call_entry.datatype = self.function_register.ret_type
-                call_entry.call_ref = call_register
-
-                return call_node
-
-                id = self.match(TokenType.Id)
-                if not self.symbol_table.has_entry(id.lexeme):
-                    Logger.semantic_error(f"name {id.lexeme} "
-                            f"not declared in this scope, line {var.line}")
                     datatype = DataType.Void
                 else:
                     datatype = self.symbol_table.get_entry(id.lexeme).datatype
-                arg_node = Node.Id(id.lexeme, datatype)
-                arg = id.lexeme
+
+                id_node = Node.Id(id.lexeme, datatype)
+                arg_node = self.__function_call(id_node)
+
+                if arg_node != id_node:
+                    call_entry = self.symbol_table.get_entry(f"{id.lexeme}:{id.line}")
+                    call_entry.name = id.lexeme
+                    call_entry.datatype = self.function_register.ret_type
+                    call_entry.call_ref = call_register
+                elif datatype == DataType.Void:
+                    Logger.semantic_error(f"function {id.lexeme} "
+                            f"not declared in this scope, line {id.line}")
+                call_register.args.append(arg_node)
             case TokenType.IntConst:
                 int_const = self.match(TokenType.IntConst)
                 arg_node = Node.IntConst(int(int_const.lexeme))

@@ -108,14 +108,15 @@ class Node:
                 "If": {
                     "condition": self.condition.asdict(),
                     "block": self.block.asdict(),
-                    "else": self.else_.asdict()
+                    "else": self.else_.asdict() if self.else_ is not None else {}
                 }
             }
 
         def type_check(self):
             self.condition.type_check()
             self.block.type_check()
-            self.else_.type_check()
+            if self.else_ is not None:
+                self.else_.type_check()
 
     @dataclass
     class While:
@@ -142,8 +143,8 @@ class Node:
         def asdict(self):
             return {
                 "Print": {
-                    "format_string": self.format_string.asdict(),
-                    "args": [arg.asdict() for arg in args]
+                    "format_string": self.format_string,
+                    "args": [arg.asdict() for arg in self.args]
                 }
             }
 
@@ -168,6 +169,7 @@ class Node:
     @dataclass
     class Call:
         function : str
+        datatype : DataType
         args : list[Any] = field(default_factory=lambda : [])
 
         def asdict(self):
