@@ -1,0 +1,1 @@
+('c', SymbolTableEntry(name='c', datatype=<DataType.Char: 'char'>, is_param=False, pos_param=-1, call_ref=None))

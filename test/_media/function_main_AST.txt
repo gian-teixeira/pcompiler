@@ -1,0 +1,125 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "a",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "FloatConst": {
+         "value": 8.2,
+         "datatype": "float"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "b",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "FloatConst": {
+         "value": 6.5,
+         "datatype": "float"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "c",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "FloatConst": {
+         "value": 7.0,
+         "datatype": "float"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "media",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "AritOp": {
+         "signal": "/",
+         "datatype": "float",
+         "left": {
+          "AritOp": {
+           "signal": "+",
+           "datatype": "float",
+           "left": {
+            "AritOp": {
+             "signal": "+",
+             "datatype": "float",
+             "left": {
+              "Id": {
+               "name": "a",
+               "datatype": "float"
+              }
+             },
+             "right": {
+              "Id": {
+               "name": "b",
+               "datatype": "float"
+              }
+             }
+            }
+           },
+           "right": {
+            "Id": {
+             "name": "c",
+             "datatype": "float"
+            }
+           }
+          }
+         },
+         "right": {
+          "FloatConst": {
+           "value": 3.0,
+           "datatype": "float"
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "Print": {
+       "format_string": "\"{}\"",
+       "args": [
+        {
+         "Id": {
+          "name": "media",
+          "datatype": "float"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ }
+}

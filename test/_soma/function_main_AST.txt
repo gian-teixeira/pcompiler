@@ -1,0 +1,86 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "b",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "IntConst": {
+         "value": 40,
+         "datatype": "int"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "c",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "IntConst": {
+         "value": 39,
+         "datatype": "int"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "a",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "Call": {
+         "function": "soma",
+         "args": [
+          {
+           "Id": {
+            "name": "b",
+            "datatype": "int"
+           }
+          },
+          {
+           "Id": {
+            "name": "c",
+            "datatype": "int"
+           }
+          }
+         ]
+        }
+       }
+      }
+     },
+     {
+      "Print": {
+       "format_string": "\"{}\"",
+       "args": [
+        {
+         "Id": {
+          "name": "a",
+          "datatype": "int"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ }
+}

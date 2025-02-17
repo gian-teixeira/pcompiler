@@ -1,0 +1,48 @@
+Starting __function TokenType.Function
+Starting __function_name TokenType.Main
+Ending __function_name Token(lexeme='main', type=<TokenType.Main: 37>, line=0)
+Starting __parameter_list TokenType.RBracket
+Ending __parameter_list None
+Starting __function_return_type TokenType.LBrace
+Ending __function_return_type None
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Let
+Starting __declaration TokenType.Let
+Starting __var_list TokenType.Id
+Starting __var_list_opt TokenType.Colon
+Ending __var_list_opt []
+Ending __var_list [Token(lexeme='c', type=<TokenType.Id: 4>, line=1)]
+Starting __type TokenType.Char
+Ending __type DataType.Char
+Ending __declaration None
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.CharConst
+Starting __rel TokenType.CharConst
+Starting __add TokenType.CharConst
+Starting __term TokenType.CharConst
+Starting __factor TokenType.CharConst
+Ending __factor Node.CharConst(value="'c'")
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.CharConst(value="'c'")
+Ending __term Node.CharConst(value="'c'")
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.CharConst(value="'c'")
+Ending __add Node.CharConst(value="'c'")
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.CharConst(value="'c'")
+Ending __rel Node.CharConst(value="'c'")
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.CharConst(value="'c'")
+Ending __expr Node.CharConst(value="'c'")
+Ending __attr_or_call Node.Assign(left=Node.Id(name='c', datatype=<DataType.Char: 'char'>), right=Node.CharConst(value="'c'"))
+Ending __command Node.Assign(left=Node.Id(name='c', datatype=<DataType.Char: 'char'>), right=Node.CharConst(value="'c'"))
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Assign(left=Node.Id(name='c', datatype=<DataType.Char: 'char'>), right=Node.CharConst(value="'c'"))])
+Ending __function Node.Function(name='main', block=Node.Block(expressions=[Node.Assign(left=Node.Id(name='c', datatype=<DataType.Char: 'char'>), right=Node.CharConst(value="'c'"))]), parameters=[])
+Starting __function_sequence TokenType.EOF
+Ending __function_sequence None

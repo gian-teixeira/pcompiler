@@ -1,0 +1,192 @@
+Starting __function TokenType.Function
+Starting __function_name TokenType.Id
+Ending __function_name Token(lexeme='soma', type=<TokenType.Id: 4>, line=0)
+Starting __parameter_list TokenType.Id
+Starting __type TokenType.Int
+Ending __type DataType.Int
+Starting __parameter_list_opt TokenType.Comma
+Starting __type TokenType.Int
+Ending __type DataType.Int
+Starting __parameter_list_opt TokenType.RBracket
+Ending __parameter_list_opt None
+Ending __parameter_list_opt None
+Ending __parameter_list None
+Starting __function_return_type TokenType.Arrow
+Starting __type TokenType.Int
+Ending __type DataType.Int
+Ending __function_return_type None
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Return
+Starting __command TokenType.Return
+Starting __return TokenType.Return
+Starting __expr TokenType.Id
+Starting __rel TokenType.Id
+Starting __add TokenType.Id
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.Plus
+Ending __function_call Node.Id(name='x', datatype=<DataType.Int: 'int'>)
+Ending __factor Node.Id(name='x', datatype=<DataType.Int: 'int'>)
+Starting __term_opt TokenType.Plus
+Ending __term_opt Node.Id(name='x', datatype=<DataType.Int: 'int'>)
+Ending __term Node.Id(name='x', datatype=<DataType.Int: 'int'>)
+Starting __add_opt TokenType.Plus
+Starting __op_add TokenType.Plus
+Ending __op_add Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=None, datatype=<DataType.Int: 'int'>)
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.PComma
+Ending __function_call Node.Id(name='y', datatype=<DataType.Int: 'int'>)
+Ending __factor Node.Id(name='y', datatype=<DataType.Int: 'int'>)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.Id(name='y', datatype=<DataType.Int: 'int'>)
+Ending __term Node.Id(name='y', datatype=<DataType.Int: 'int'>)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Ending __add_opt Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Ending __add Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Ending __rel Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Ending __expr Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>)
+Ending __return Node.Return(expression=Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>))
+Ending __command Node.Return(expression=Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>))
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Return(expression=Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>))])
+Ending __function Node.Function(name='soma', block=Node.Block(expressions=[Node.Return(expression=Node.AritOp(signal='+', left=Node.Id(name='x', datatype=<DataType.Int: 'int'>), right=Node.Id(name='y', datatype=<DataType.Int: 'int'>), datatype=<DataType.Int: 'int'>))]), parameters=[Node.Id(name='x', datatype=<DataType.Int: 'int'>), Node.Id(name='y', datatype=<DataType.Int: 'int'>)])
+Starting __function_sequence TokenType.Function
+Starting __function TokenType.Function
+Starting __function_name TokenType.Main
+Ending __function_name Token(lexeme='main', type=<TokenType.Main: 37>, line=4)
+Starting __parameter_list TokenType.RBracket
+Ending __parameter_list None
+Starting __function_return_type TokenType.LBrace
+Ending __function_return_type None
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Let
+Starting __declaration TokenType.Let
+Starting __var_list TokenType.Id
+Starting __var_list_opt TokenType.Comma
+Starting __var_list_opt TokenType.Comma
+Starting __var_list_opt TokenType.Colon
+Ending __var_list_opt []
+Ending __var_list_opt [Token(lexeme='c', type=<TokenType.Id: 4>, line=5)]
+Ending __var_list_opt [Token(lexeme='b', type=<TokenType.Id: 4>, line=5), Token(lexeme='c', type=<TokenType.Id: 4>, line=5)]
+Ending __var_list [Token(lexeme='a', type=<TokenType.Id: 4>, line=5), Token(lexeme='b', type=<TokenType.Id: 4>, line=5), Token(lexeme='c', type=<TokenType.Id: 4>, line=5)]
+Starting __type TokenType.Int
+Ending __type DataType.Int
+Ending __declaration None
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.IntConst
+Starting __rel TokenType.IntConst
+Starting __add TokenType.IntConst
+Starting __term TokenType.IntConst
+Starting __factor TokenType.IntConst
+Ending __factor Node.IntConst(value=40)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.IntConst(value=40)
+Ending __term Node.IntConst(value=40)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.IntConst(value=40)
+Ending __add Node.IntConst(value=40)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.IntConst(value=40)
+Ending __rel Node.IntConst(value=40)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.IntConst(value=40)
+Ending __expr Node.IntConst(value=40)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='b', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=40))
+Ending __command Node.Assign(left=Node.Id(name='b', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=40))
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.IntConst
+Starting __rel TokenType.IntConst
+Starting __add TokenType.IntConst
+Starting __term TokenType.IntConst
+Starting __factor TokenType.IntConst
+Ending __factor Node.IntConst(value=39)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.IntConst(value=39)
+Ending __term Node.IntConst(value=39)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.IntConst(value=39)
+Ending __add Node.IntConst(value=39)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.IntConst(value=39)
+Ending __rel Node.IntConst(value=39)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.IntConst(value=39)
+Ending __expr Node.IntConst(value=39)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='c', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=39))
+Ending __command Node.Assign(left=Node.Id(name='c', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=39))
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.Id
+Starting __rel TokenType.Id
+Starting __add TokenType.Id
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.LBracket
+Starting __arg_list TokenType.Id
+Starting __arg TokenType.Id
+Starting __function_call TokenType.Comma
+Ending __function_call Node.Id(name='b', datatype=<DataType.Int: 'int'>)
+Ending __arg Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>)])
+Starting __arg_list_opt TokenType.Comma
+Starting __arg TokenType.Id
+Starting __function_call TokenType.RBracket
+Ending __function_call Node.Id(name='c', datatype=<DataType.Int: 'int'>)
+Ending __arg Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Starting __arg_list_opt TokenType.RBracket
+Ending __arg_list_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __arg_list_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __arg_list Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __function_call Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __factor Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __term Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __add Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __rel Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __expr Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])
+Ending __attr_or_call Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)]))
+Ending __command Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)]))
+Starting __sequence TokenType.Println
+Starting __command TokenType.Println
+Starting __println TokenType.Println
+Starting __arg_list TokenType.Id
+Starting __arg TokenType.Id
+Starting __function_call TokenType.RBracket
+Ending __function_call Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Ending __arg Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])
+Starting __arg_list_opt TokenType.RBracket
+Ending __arg_list_opt Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])
+Ending __arg_list Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])
+Ending __println Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])
+Ending __command Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Assign(left=Node.Id(name='b', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=40)), Node.Assign(left=Node.Id(name='c', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=39)), Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])), Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])])
+Ending __function Node.Function(name='main', block=Node.Block(expressions=[Node.Assign(left=Node.Id(name='b', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=40)), Node.Assign(left=Node.Id(name='c', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=39)), Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.Call(function='soma', datatype=<DataType.Int: 'int'>, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])), Node.Print(format_string='"{}"', args=[Node.Id(name='a', datatype=<DataType.Int: 'int'>)])]), parameters=[])
+Starting __function_sequence TokenType.EOF
+Ending __function_sequence None
+Ending __function_sequence None

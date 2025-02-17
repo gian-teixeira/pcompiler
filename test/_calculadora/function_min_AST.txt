@@ -1,0 +1,107 @@
+{
+ "Function": {
+  "name": "min",
+  "parameters": [
+   {
+    "Id": {
+     "name": "x",
+     "datatype": "int"
+    }
+   },
+   {
+    "Id": {
+     "name": "y",
+     "datatype": "int"
+    }
+   }
+  ],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "a",
+         "datatype": "char"
+        }
+       },
+       "right": {
+        "CharConst": {
+         "value": "'a'",
+         "datatype": "char"
+        }
+       }
+      }
+     },
+     {
+      "While": {
+       "condition": {
+        "RelOp": {
+         "signal": "!=",
+         "datatype": "int",
+         "left": {
+          "Id": {
+           "name": "x",
+           "datatype": "int"
+          }
+         },
+         "right": {
+          "Id": {
+           "name": "a",
+           "datatype": "char"
+          }
+         }
+        }
+       },
+       "block": {
+        "Block": {
+         "expressions": [
+          {
+           "Assign": {
+            "left": {
+             "Id": {
+              "name": "x",
+              "datatype": "int"
+             }
+            },
+            "right": {
+             "AritOp": {
+              "signal": "+",
+              "datatype": "int",
+              "left": {
+               "Id": {
+                "name": "x",
+                "datatype": "int"
+               }
+              },
+              "right": {
+               "IntConst": {
+                "value": 1,
+                "datatype": "int"
+               }
+              }
+             }
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     },
+     {
+      "Return": {
+       "expression": {
+        "Id": {
+         "name": "y",
+         "datatype": "int"
+        }
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

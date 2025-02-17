@@ -1,0 +1,190 @@
+Starting __function TokenType.Function
+Starting __function_name TokenType.Main
+Ending __function_name Token(lexeme='main', type=<TokenType.Main: 37>, line=0)
+Starting __parameter_list TokenType.RBracket
+Ending __parameter_list None
+Starting __function_return_type TokenType.LBrace
+Ending __function_return_type None
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Let
+Starting __declaration TokenType.Let
+Starting __var_list TokenType.Id
+Starting __var_list_opt TokenType.Comma
+Starting __var_list_opt TokenType.Comma
+Starting __var_list_opt TokenType.Comma
+Starting __var_list_opt TokenType.Colon
+Ending __var_list_opt []
+Ending __var_list_opt [Token(lexeme='media', type=<TokenType.Id: 4>, line=1)]
+Ending __var_list_opt [Token(lexeme='c', type=<TokenType.Id: 4>, line=1), Token(lexeme='media', type=<TokenType.Id: 4>, line=1)]
+Ending __var_list_opt [Token(lexeme='b', type=<TokenType.Id: 4>, line=1), Token(lexeme='c', type=<TokenType.Id: 4>, line=1), Token(lexeme='media', type=<TokenType.Id: 4>, line=1)]
+Ending __var_list [Token(lexeme='a', type=<TokenType.Id: 4>, line=1), Token(lexeme='b', type=<TokenType.Id: 4>, line=1), Token(lexeme='c', type=<TokenType.Id: 4>, line=1), Token(lexeme='media', type=<TokenType.Id: 4>, line=1)]
+Starting __type TokenType.Float
+Ending __type DataType.Float
+Ending __declaration None
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.FloatConst
+Starting __rel TokenType.FloatConst
+Starting __add TokenType.FloatConst
+Starting __term TokenType.FloatConst
+Starting __factor TokenType.FloatConst
+Ending __factor Node.FloatConst(value=8.2)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.FloatConst(value=8.2)
+Ending __term Node.FloatConst(value=8.2)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.FloatConst(value=8.2)
+Ending __add Node.FloatConst(value=8.2)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.FloatConst(value=8.2)
+Ending __rel Node.FloatConst(value=8.2)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.FloatConst(value=8.2)
+Ending __expr Node.FloatConst(value=8.2)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=8.2))
+Ending __command Node.Assign(left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=8.2))
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.FloatConst
+Starting __rel TokenType.FloatConst
+Starting __add TokenType.FloatConst
+Starting __term TokenType.FloatConst
+Starting __factor TokenType.FloatConst
+Ending __factor Node.FloatConst(value=6.5)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.FloatConst(value=6.5)
+Ending __term Node.FloatConst(value=6.5)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.FloatConst(value=6.5)
+Ending __add Node.FloatConst(value=6.5)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.FloatConst(value=6.5)
+Ending __rel Node.FloatConst(value=6.5)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.FloatConst(value=6.5)
+Ending __expr Node.FloatConst(value=6.5)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='b', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=6.5))
+Ending __command Node.Assign(left=Node.Id(name='b', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=6.5))
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.FloatConst
+Starting __rel TokenType.FloatConst
+Starting __add TokenType.FloatConst
+Starting __term TokenType.FloatConst
+Starting __factor TokenType.FloatConst
+Ending __factor Node.FloatConst(value=7.0)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.FloatConst(value=7.0)
+Ending __term Node.FloatConst(value=7.0)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.FloatConst(value=7.0)
+Ending __add Node.FloatConst(value=7.0)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.FloatConst(value=7.0)
+Ending __rel Node.FloatConst(value=7.0)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.FloatConst(value=7.0)
+Ending __expr Node.FloatConst(value=7.0)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='c', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=7.0))
+Ending __command Node.Assign(left=Node.Id(name='c', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=7.0))
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.LBracket
+Starting __rel TokenType.LBracket
+Starting __add TokenType.LBracket
+Starting __term TokenType.LBracket
+Starting __factor TokenType.LBracket
+Starting __expr TokenType.Id
+Starting __rel TokenType.Id
+Starting __add TokenType.Id
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.Plus
+Ending __function_call Node.Id(name='a', datatype=<DataType.Float: 'float'>)
+Ending __factor Node.Id(name='a', datatype=<DataType.Float: 'float'>)
+Starting __term_opt TokenType.Plus
+Ending __term_opt Node.Id(name='a', datatype=<DataType.Float: 'float'>)
+Ending __term Node.Id(name='a', datatype=<DataType.Float: 'float'>)
+Starting __add_opt TokenType.Plus
+Starting __op_add TokenType.Plus
+Ending __op_add Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=None, datatype=<DataType.Float: 'float'>)
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.Plus
+Ending __function_call Node.Id(name='b', datatype=<DataType.Float: 'float'>)
+Ending __factor Node.Id(name='b', datatype=<DataType.Float: 'float'>)
+Starting __term_opt TokenType.Plus
+Ending __term_opt Node.Id(name='b', datatype=<DataType.Float: 'float'>)
+Ending __term Node.Id(name='b', datatype=<DataType.Float: 'float'>)
+Starting __add_opt TokenType.Plus
+Starting __op_add TokenType.Plus
+Ending __op_add Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=None, datatype=<DataType.Float: 'float'>)
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.RBracket
+Ending __function_call Node.Id(name='c', datatype=<DataType.Float: 'float'>)
+Ending __factor Node.Id(name='c', datatype=<DataType.Float: 'float'>)
+Starting __term_opt TokenType.RBracket
+Ending __term_opt Node.Id(name='c', datatype=<DataType.Float: 'float'>)
+Ending __term Node.Id(name='c', datatype=<DataType.Float: 'float'>)
+Starting __add_opt TokenType.RBracket
+Ending __add_opt Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __add_opt Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __add_opt Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __add Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Starting __rel_opt TokenType.RBracket
+Ending __rel_opt Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __rel Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Starting __expr_opt TokenType.RBracket
+Ending __expr_opt Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __expr Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Ending __factor Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>)
+Starting __term_opt TokenType.Div
+Starting __op_mult TokenType.Div
+Ending __op_mult Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=None, datatype=<DataType.Float: 'float'>)
+Starting __factor TokenType.FloatConst
+Ending __factor Node.FloatConst(value=3.0)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __term_opt Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __term Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __add Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __rel Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __expr Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='media', datatype=<DataType.Float: 'float'>), right=Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>))
+Ending __command Node.Assign(left=Node.Id(name='media', datatype=<DataType.Float: 'float'>), right=Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>))
+Starting __sequence TokenType.Println
+Starting __command TokenType.Println
+Starting __println TokenType.Println
+Starting __arg_list TokenType.Id
+Starting __arg TokenType.Id
+Starting __function_call TokenType.RBracket
+Ending __function_call Node.Id(name='media', datatype=<DataType.Float: 'float'>)
+Ending __arg Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])
+Starting __arg_list_opt TokenType.RBracket
+Ending __arg_list_opt Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])
+Ending __arg_list Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])
+Ending __println Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])
+Ending __command Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Assign(left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=8.2)), Node.Assign(left=Node.Id(name='b', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=6.5)), Node.Assign(left=Node.Id(name='c', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=7.0)), Node.Assign(left=Node.Id(name='media', datatype=<DataType.Float: 'float'>), right=Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)), Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])])
+Ending __function Node.Function(name='main', block=Node.Block(expressions=[Node.Assign(left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=8.2)), Node.Assign(left=Node.Id(name='b', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=6.5)), Node.Assign(left=Node.Id(name='c', datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=7.0)), Node.Assign(left=Node.Id(name='media', datatype=<DataType.Float: 'float'>), right=Node.AritOp(signal='/', left=Node.AritOp(signal='+', left=Node.AritOp(signal='+', left=Node.Id(name='a', datatype=<DataType.Float: 'float'>), right=Node.Id(name='b', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.Id(name='c', datatype=<DataType.Float: 'float'>), datatype=<DataType.Float: 'float'>), right=Node.FloatConst(value=3.0), datatype=<DataType.Float: 'float'>)), Node.Print(format_string='"{}"', args=[Node.Id(name='media', datatype=<DataType.Float: 'float'>)])]), parameters=[])
+Starting __function_sequence TokenType.EOF
+Ending __function_sequence None

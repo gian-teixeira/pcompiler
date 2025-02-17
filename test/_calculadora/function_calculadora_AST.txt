@@ -1,0 +1,281 @@
+{
+ "Function": {
+  "name": "calculadora",
+  "parameters": [
+   {
+    "Id": {
+     "name": "op",
+     "datatype": "char"
+    }
+   },
+   {
+    "Id": {
+     "name": "x",
+     "datatype": "float"
+    }
+   },
+   {
+    "Id": {
+     "name": "y",
+     "datatype": "float"
+    }
+   }
+  ],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "If": {
+       "condition": {
+        "RelOp": {
+         "signal": "==",
+         "datatype": "int",
+         "left": {
+          "Id": {
+           "name": "op",
+           "datatype": "char"
+          }
+         },
+         "right": {
+          "CharConst": {
+           "value": "'+'",
+           "datatype": "char"
+          }
+         }
+        }
+       },
+       "block": {
+        "Block": {
+         "expressions": [
+          {
+           "Return": {
+            "expression": {
+             "AritOp": {
+              "signal": "+",
+              "datatype": "float",
+              "left": {
+               "Id": {
+                "name": "x",
+                "datatype": "float"
+               }
+              },
+              "right": {
+               "Id": {
+                "name": "y",
+                "datatype": "float"
+               }
+              }
+             }
+            }
+           }
+          }
+         ]
+        }
+       },
+       "else": {
+        "If": {
+         "condition": {
+          "RelOp": {
+           "signal": "==",
+           "datatype": "int",
+           "left": {
+            "Id": {
+             "name": "op",
+             "datatype": "char"
+            }
+           },
+           "right": {
+            "CharConst": {
+             "value": "'-'",
+             "datatype": "char"
+            }
+           }
+          }
+         },
+         "block": {
+          "Block": {
+           "expressions": [
+            {
+             "Return": {
+              "expression": {
+               "AritOp": {
+                "signal": "-",
+                "datatype": "float",
+                "left": {
+                 "Id": {
+                  "name": "x",
+                  "datatype": "float"
+                 }
+                },
+                "right": {
+                 "Id": {
+                  "name": "y",
+                  "datatype": "float"
+                 }
+                }
+               }
+              }
+             }
+            }
+           ]
+          }
+         },
+         "else": {
+          "If": {
+           "condition": {
+            "RelOp": {
+             "signal": "==",
+             "datatype": "int",
+             "left": {
+              "Id": {
+               "name": "op",
+               "datatype": "char"
+              }
+             },
+             "right": {
+              "CharConst": {
+               "value": "'*'",
+               "datatype": "char"
+              }
+             }
+            }
+           },
+           "block": {
+            "Block": {
+             "expressions": [
+              {
+               "Return": {
+                "expression": {
+                 "AritOp": {
+                  "signal": "*",
+                  "datatype": "float",
+                  "left": {
+                   "Id": {
+                    "name": "x",
+                    "datatype": "float"
+                   }
+                  },
+                  "right": {
+                   "Id": {
+                    "name": "y",
+                    "datatype": "float"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             ]
+            }
+           },
+           "else": {
+            "If": {
+             "condition": {
+              "RelOp": {
+               "signal": "==",
+               "datatype": "int",
+               "left": {
+                "Id": {
+                 "name": "op",
+                 "datatype": "char"
+                }
+               },
+               "right": {
+                "CharConst": {
+                 "value": "'/'",
+                 "datatype": "char"
+                }
+               }
+              }
+             },
+             "block": {
+              "Block": {
+               "expressions": [
+                {
+                 "If": {
+                  "condition": {
+                   "RelOp": {
+                    "signal": "==",
+                    "datatype": "int",
+                    "left": {
+                     "Id": {
+                      "name": "y",
+                      "datatype": "float"
+                     }
+                    },
+                    "right": {
+                     "FloatConst": {
+                      "value": 0.0,
+                      "datatype": "float"
+                     }
+                    }
+                   }
+                  },
+                  "block": {
+                   "Block": {
+                    "expressions": [
+                     {
+                      "Return": {
+                       "expression": {
+                        "FloatConst": {
+                         "value": 0.0,
+                         "datatype": "float"
+                        }
+                       }
+                      }
+                     }
+                    ]
+                   }
+                  },
+                  "else": {}
+                 }
+                },
+                {
+                 "Return": {
+                  "expression": {
+                   "AritOp": {
+                    "signal": "/",
+                    "datatype": "float",
+                    "left": {
+                     "Id": {
+                      "name": "x",
+                      "datatype": "float"
+                     }
+                    },
+                    "right": {
+                     "Id": {
+                      "name": "y",
+                      "datatype": "float"
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               ]
+              }
+             },
+             "else": {}
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     {
+      "Return": {
+       "expression": {
+        "FloatConst": {
+         "value": 0.0,
+         "datatype": "float"
+        }
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

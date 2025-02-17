@@ -1,0 +1,47 @@
+{
+ "Function": {
+  "name": "soma",
+  "parameters": [
+   {
+    "Id": {
+     "name": "x",
+     "datatype": "int"
+    }
+   },
+   {
+    "Id": {
+     "name": "y",
+     "datatype": "int"
+    }
+   }
+  ],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Return": {
+       "expression": {
+        "AritOp": {
+         "signal": "+",
+         "datatype": "int",
+         "left": {
+          "Id": {
+           "name": "x",
+           "datatype": "int"
+          }
+         },
+         "right": {
+          "Id": {
+           "name": "y",
+           "datatype": "int"
+          }
+         }
+        }
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

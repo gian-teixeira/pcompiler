@@ -1,0 +1,97 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "i",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "IntConst": {
+         "value": 0,
+         "datatype": "int"
+        }
+       }
+      }
+     },
+     {
+      "While": {
+       "condition": {
+        "RelOp": {
+         "signal": "<",
+         "datatype": "int",
+         "left": {
+          "Id": {
+           "name": "i",
+           "datatype": "int"
+          }
+         },
+         "right": {
+          "IntConst": {
+           "value": 10,
+           "datatype": "int"
+          }
+         }
+        }
+       },
+       "block": {
+        "Block": {
+         "expressions": [
+          {
+           "Print": {
+            "format_string": "\"{}\"",
+            "args": [
+             {
+              "Id": {
+               "name": "i",
+               "datatype": "int"
+              }
+             }
+            ]
+           }
+          },
+          {
+           "Assign": {
+            "left": {
+             "Id": {
+              "name": "i",
+              "datatype": "int"
+             }
+            },
+            "right": {
+             "AritOp": {
+              "signal": "+",
+              "datatype": "int",
+              "left": {
+               "Id": {
+                "name": "i",
+                "datatype": "int"
+               }
+              },
+              "right": {
+               "IntConst": {
+                "value": 1,
+                "datatype": "int"
+               }
+              }
+             }
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

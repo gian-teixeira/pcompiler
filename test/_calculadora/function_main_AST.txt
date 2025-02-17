@@ -1,0 +1,76 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "a",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "FloatConst": {
+         "value": 1.8,
+         "datatype": "float"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "b",
+         "datatype": "float"
+        }
+       },
+       "right": {
+        "FloatConst": {
+         "value": 7.2,
+         "datatype": "float"
+        }
+       }
+      }
+     },
+     {
+      "Print": {
+       "format_string": "\"{}\"",
+       "args": [
+        {
+         "Call": {
+          "function": "calculadora",
+          "args": [
+           {
+            "CharConst": {
+             "value": "'*'",
+             "datatype": "char"
+            }
+           },
+           {
+            "Id": {
+             "name": "a",
+             "datatype": "float"
+            }
+           },
+           {
+            "Id": {
+             "name": "b",
+             "datatype": "float"
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ }
+}

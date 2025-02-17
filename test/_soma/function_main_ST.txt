@@ -1,0 +1,4 @@
+('a', SymbolTableEntry(name='a', datatype=<DataType.Int: 'int'>, is_param=False, pos_param=-1, call_ref=None))
+('b', SymbolTableEntry(name='b', datatype=<DataType.Int: 'int'>, is_param=False, pos_param=-1, call_ref=None))
+('c', SymbolTableEntry(name='c', datatype=<DataType.Int: 'int'>, is_param=False, pos_param=-1, call_ref=None))
+('soma', SymbolTableEntry(name='soma', datatype=<DataType.Void: 'void'>, is_param=False, pos_param=-1, call_ref=CallRegister(name='soma', num_args=0, args=[Node.Id(name='b', datatype=<DataType.Int: 'int'>), Node.Id(name='c', datatype=<DataType.Int: 'int'>)])))

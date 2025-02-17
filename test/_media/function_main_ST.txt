@@ -1,0 +1,4 @@
+('a', SymbolTableEntry(name='a', datatype=<DataType.Float: 'float'>, is_param=False, pos_param=-1, call_ref=None))
+('b', SymbolTableEntry(name='b', datatype=<DataType.Float: 'float'>, is_param=False, pos_param=-1, call_ref=None))
+('c', SymbolTableEntry(name='c', datatype=<DataType.Float: 'float'>, is_param=False, pos_param=-1, call_ref=None))
+('media', SymbolTableEntry(name='media', datatype=<DataType.Float: 'float'>, is_param=False, pos_param=-1, call_ref=None))

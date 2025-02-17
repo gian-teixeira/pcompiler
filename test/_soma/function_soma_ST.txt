@@ -1,0 +1,2 @@
+('x', SymbolTableEntry(name='x', datatype=<DataType.Int: 'int'>, is_param=True, pos_param=0, call_ref=None))
+('y', SymbolTableEntry(name='y', datatype=<DataType.Int: 'int'>, is_param=True, pos_param=1, call_ref=None))

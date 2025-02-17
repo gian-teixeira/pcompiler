@@ -1,0 +1,28 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "c",
+         "datatype": "char"
+        }
+       },
+       "right": {
+        "CharConst": {
+         "value": "'c'",
+         "datatype": "char"
+        }
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

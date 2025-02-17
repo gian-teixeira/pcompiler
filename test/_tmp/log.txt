@@ -1,0 +1,110 @@
+Starting __function TokenType.Function
+Starting __function_name TokenType.Main
+Ending __function_name Token(lexeme='main', type=<TokenType.Main: 37>, line=0)
+Starting __parameter_list TokenType.RBracket
+Ending __parameter_list None
+Starting __function_return_type TokenType.LBrace
+Ending __function_return_type None
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Let
+Starting __declaration TokenType.Let
+Starting __var_list TokenType.Id
+Starting __var_list_opt TokenType.Colon
+Ending __var_list_opt []
+Ending __var_list [Token(lexeme='a', type=<TokenType.Id: 4>, line=1)]
+Starting __type TokenType.Int
+Ending __type DataType.Int
+Ending __declaration None
+Starting __sequence TokenType.Id
+Starting __command TokenType.Id
+Starting __attr_or_call TokenType.Attr
+Starting __expr TokenType.IntConst
+Starting __rel TokenType.IntConst
+Starting __add TokenType.IntConst
+Starting __term TokenType.IntConst
+Starting __factor TokenType.IntConst
+Ending __factor Node.IntConst(value=0)
+Starting __term_opt TokenType.PComma
+Ending __term_opt Node.IntConst(value=0)
+Ending __term Node.IntConst(value=0)
+Starting __add_opt TokenType.PComma
+Ending __add_opt Node.IntConst(value=0)
+Ending __add Node.IntConst(value=0)
+Starting __rel_opt TokenType.PComma
+Ending __rel_opt Node.IntConst(value=0)
+Ending __rel Node.IntConst(value=0)
+Starting __expr_opt TokenType.PComma
+Ending __expr_opt Node.IntConst(value=0)
+Ending __expr Node.IntConst(value=0)
+Ending __attr_or_call Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=0))
+Ending __command Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=0))
+Starting __sequence TokenType.If
+Starting __command TokenType.If
+Starting __if TokenType.If
+Starting __expr TokenType.Id
+Starting __rel TokenType.Id
+Starting __add TokenType.Id
+Starting __term TokenType.Id
+Starting __factor TokenType.Id
+Starting __function_call TokenType.NEQ
+Ending __function_call Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Ending __factor Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Starting __term_opt TokenType.NEQ
+Ending __term_opt Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Ending __term Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Starting __add_opt TokenType.NEQ
+Ending __add_opt Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Ending __add Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Starting __rel_opt TokenType.NEQ
+Ending __rel_opt Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Ending __rel Node.Id(name='a', datatype=<DataType.Int: 'int'>)
+Starting __expr_opt TokenType.NEQ
+Starting __op_equal TokenType.NEQ
+Ending __op_equal Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=None, datatype=<DataType.Int: 'int'>)
+Starting __rel TokenType.IntConst
+Starting __add TokenType.IntConst
+Starting __term TokenType.IntConst
+Starting __factor TokenType.IntConst
+Ending __factor Node.IntConst(value=1)
+Starting __term_opt TokenType.LBrace
+Ending __term_opt Node.IntConst(value=1)
+Ending __term Node.IntConst(value=1)
+Starting __add_opt TokenType.LBrace
+Ending __add_opt Node.IntConst(value=1)
+Ending __add Node.IntConst(value=1)
+Starting __rel_opt TokenType.LBrace
+Ending __rel_opt Node.IntConst(value=1)
+Ending __rel Node.IntConst(value=1)
+Starting __expr_opt TokenType.LBrace
+Ending __expr_opt Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>)
+Ending __expr_opt Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>)
+Ending __expr Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>)
+Starting __block TokenType.LBrace
+Starting __sequence TokenType.Println
+Starting __command TokenType.Println
+Starting __println TokenType.Println
+Starting __arg_list TokenType.IntConst
+Starting __arg TokenType.IntConst
+Ending __arg Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])
+Starting __arg_list_opt TokenType.RBracket
+Ending __arg_list_opt Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])
+Ending __arg_list Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])
+Ending __println Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])
+Ending __command Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])])
+Starting __else TokenType.RBrace
+Ending __else None
+Ending __if Node.If(condition=Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>), block=Node.Block(expressions=[Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])]), else_=None)
+Ending __command Node.If(condition=Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>), block=Node.Block(expressions=[Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])]), else_=None)
+Starting __sequence TokenType.RBrace
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __sequence None
+Ending __block Node.Block(expressions=[Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=0)), Node.If(condition=Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>), block=Node.Block(expressions=[Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])]), else_=None)])
+Ending __function Node.Function(name='main', block=Node.Block(expressions=[Node.Assign(left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=0)), Node.If(condition=Node.RelOp(signal='!=', left=Node.Id(name='a', datatype=<DataType.Int: 'int'>), right=Node.IntConst(value=1), datatype=<DataType.Int: 'int'>), block=Node.Block(expressions=[Node.Print(format_string='"{}"', args=[Node.IntConst(value=1)])]), else_=None)]), parameters=[])
+Starting __function_sequence TokenType.EOF
+Ending __function_sequence None

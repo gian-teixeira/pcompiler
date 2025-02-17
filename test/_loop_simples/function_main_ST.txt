@@ -1,0 +1,1 @@
+('i', SymbolTableEntry(name='i', datatype=<DataType.Int: 'int'>, is_param=False, pos_param=-1, call_ref=None))
