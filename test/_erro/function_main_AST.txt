@@ -1,0 +1,86 @@
+{
+ "Function": {
+  "name": "main",
+  "parameters": [],
+  "block": {
+   "Block": {
+    "expressions": [
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "b",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "IntConst": {
+         "value": 1,
+         "datatype": "int"
+        }
+       }
+      }
+     },
+     {
+      "Assign": {
+       "left": {
+        "Id": {
+         "name": "a",
+         "datatype": "int"
+        }
+       },
+       "right": {
+        "CharConst": {
+         "value": "'c'",
+         "datatype": "char"
+        }
+       }
+      }
+     },
+     {
+      "If": {
+       "condition": {
+        "RelOp": {
+         "signal": "==",
+         "datatype": "int",
+         "left": {
+          "Id": {
+           "name": "b",
+           "datatype": "int"
+          }
+         },
+         "right": {
+          "FloatConst": {
+           "value": 1.0,
+           "datatype": "float"
+          }
+         }
+        }
+       },
+       "block": {
+        "Block": {
+         "expressions": [
+          {
+           "Print": {
+            "format_string": "\"{}\"",
+            "args": [
+             {
+              "Id": {
+               "name": "a",
+               "datatype": "int"
+              }
+             }
+            ]
+           }
+          }
+         ]
+        }
+       },
+       "else": {}
+      }
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,2 @@
+Assign : variable `a` incompatible with type `char`
+RelOp : operator `==` incompatible with types `int` and `float`
